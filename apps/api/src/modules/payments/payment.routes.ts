@@ -50,6 +50,8 @@ router.post("/initiate", async (req, res) => {
     const salt = process.env.PAYU_MERCHANT_SALT;
     const publicApiUrl = process.env.PUBLIC_API_URL;
 
+    console.log(key, salt, publicApiUrl)
+
     if (!key || !salt || !publicApiUrl) {
       return res.status(500).json({
         message: "PayU environment configuration is incomplete",
@@ -82,6 +84,7 @@ router.post("/initiate", async (req, res) => {
     const txnid =
       `st${Date.now().toString(36)}${randomBytes(5).toString("hex")}`;
 
+    console.log('txnid', txnid)
     await db.insert(payments).values({
       studentId,
       txnid,
@@ -105,7 +108,7 @@ router.post("/initiate", async (req, res) => {
       udf4: "",
       udf5: "",
     };
-
+    console.log('txnid2', txnid)
     fields.hash = createPaymentHash(fields, salt);
 
     return res.json({

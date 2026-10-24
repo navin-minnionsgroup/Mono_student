@@ -135,7 +135,7 @@ function App() {
         </div>
       </header>
       <div>
-        <PayButton studentId={3} />
+        <PayButton studentId={6} />
       </div>
       {error && <div className="alert error">{error}</div>}
       {notice && <div className="alert success">{notice}</div>}
