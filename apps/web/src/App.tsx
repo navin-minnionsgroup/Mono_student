@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { studentApi } from "./lib/api";
 import type { Student, StudentFormData } from "./types/student";
 import "./App.css";
+import PayButton from "./component/payment";
 
 const emptyForm: StudentFormData = {
   name: "",
@@ -133,7 +134,9 @@ function App() {
           <strong>{students.length}</strong>
         </div>
       </header>
-
+      <div>
+        <PayButton studentId={3} />
+      </div>
       {error && <div className="alert error">{error}</div>}
       {notice && <div className="alert success">{notice}</div>}
 

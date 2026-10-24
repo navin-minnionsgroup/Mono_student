@@ -4,6 +4,7 @@ import express from "express";
 import cors from "cors";
 import { db } from "./db";
 import studentRoutes from "./modules/students/student.routes";
+import paymentRoutes from "./modules/payments/payment.routes";
 import { sql } from "drizzle-orm";
 
 const app = express();
@@ -43,6 +44,8 @@ app.get("/api/health/db", async (_req, res) => {
 });
 
 app.use("/api/students", studentRoutes);
+
+app.use("/api/payments", paymentRoutes);
 
 app.listen(PORT, () => {
   console.log(`API running at http://localhost:${PORT}`);
